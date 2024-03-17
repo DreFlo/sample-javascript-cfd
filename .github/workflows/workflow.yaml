@@ -43,8 +43,4 @@ jobs:
      with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}} 
           heroku_app_name: "YOUR_HEROKU_APP" 
-          heroku_email: "youremai@foo.com" 
-		
-		
-		
-	
+          heroku_email: "youremai@foo.com"
