@@ -9,8 +9,7 @@ jobs:
     runs-on:
     - "ubuntu-latest"
     container:
-      image: "cimg/node:16.16"
-      options: "--user root"
+      image: node:16
     steps:
     - uses: "actions/checkout@v4"
     - run: "yarn install"
