@@ -1,32 +1,27 @@
-name: Node
+name: "sample"
 
-
-
-on: [ push ]
-
-
+on:
+  workflow_dispatch:
 
 jobs:
- test:
-  runs-on: ubuntu-latest
-  
-  container:
-   image: node:16
-   env:
-    NODE_ENV: development  
-  
-  steps:
-   - uses: actions/checkout@v4
-   - run: yarn install
-   - run: yarn  run test:unit 
-  
-  
-  
- cypress-run:
-  runs-on: ubuntu-latest
-  
-  steps:
-    - uses: actions/checkout@v4
-    - uses: cypress-io/github-action@v6
-      with:
-       command: yarn  run test:e2e --headless 
+  test:
+    name: "test"
+    runs-on:
+    - "ubuntu-latest"
+    container:
+      image: "cimg/node:16.16"
+    steps:
+    - uses: "actions/checkout@v4"
+    - run: "yarn install"
+    - 
+      run: "yarn run test:unit"
+      name: "Run tests"
+  cypress-run:
+    name: "cypress/run"
+    runs-on:
+    - "ubuntu-latest"
+    container:
+      image: "cypress/browsers:node16.14.0-chrome99-ff97"
+    steps:
+    - uses: "actions/checkout@v4"
+    - run: "yarn  run test:e2e --headless "
